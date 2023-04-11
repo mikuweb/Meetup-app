@@ -1,5 +1,4 @@
 import MeetupList from "../components/meetups/MeetupList";
-import Layout from "../components/layout/Layout";
 
 interface MeetupData {
   id: string;
@@ -37,11 +36,7 @@ const DUMMY_MEETUPS: MeetupData[] = [
 ];
 
 function HomePage() {
-  return (
-    <Layout>
-      <MeetupList meetups={DUMMY_MEETUPS} />
-    </Layout>
-  );
+  return <MeetupList meetups={DUMMY_MEETUPS} />;
 }
 
 export default HomePage;
