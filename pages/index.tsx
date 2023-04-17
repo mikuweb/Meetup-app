@@ -35,8 +35,22 @@ const DUMMY_MEETUPS: MeetupData[] = [
   },
 ];
 
-function HomePage() {
-  return <MeetupList meetups={DUMMY_MEETUPS} />;
+function HomePage(props) {
+  return <MeetupList meetups={props.meetups} />;
 }
 
 export default HomePage;
+
+// it is called before "HomePage" component is called
+// Next.js will wait for this Promise to resolve,
+//which means it waits until your data is loaded,
+//then you return the data to HomePage
+export async function getStaticProps() {
+  //fetch data from API
+  return {
+    props: {
+      meetups: DUMMY_MEETUPS,
+    },
+    revalidate: 10,
+  };
+}
